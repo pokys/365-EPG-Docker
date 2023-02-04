@@ -21,7 +21,7 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag pokys/365-epg-docker:$(date +%s)
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/365-epg-docker:$(date +%s)
       
     - name: Docker Push
-      run: docker push pokys/365-epg-docker:$(date +%s)
+      run: docker push ${{secrets.DOCKER_USER}}/365-epg-docker:$(date +%s)
