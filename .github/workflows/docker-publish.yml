@@ -36,6 +36,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        
+      - name: Create file with current date
+        run: |
+          echo $(date +%Y-%m-%d) > current_date.txt
+          git add current_date.txt
+          git commit -m "Add current_date.txt"
+          git push
+
       
   #    - name: Set up QEMU
   #      uses: docker/setup-qemu-action@v2
