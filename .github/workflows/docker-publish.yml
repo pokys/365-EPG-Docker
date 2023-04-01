@@ -40,14 +40,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
-      - name: "Commit build date"
-        run: |
-          echo $(date +%Y-%m-%d) > build_date.txt
-          git config user.name "GitHub Action"
-          git config user.email "robot@github.invalid"
-          git add build_date.txt || true
-          git commit -m "Update build (autocommit)" || true
-          git push
+#      - name: "Commit build date"
+#        run: |
+#          echo $(date +%Y-%m-%d) > build_date.txt
+#          git config user.name "GitHub Action"
+#          git config user.email "robot@github.invalid"
+#          git add build_date.txt || true
+#          git commit -m "Update build (autocommit)" || true
+#          git push
       
 
 
