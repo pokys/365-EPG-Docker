@@ -37,23 +37,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-      - name: save current date
+      - name: "Commit build date"
         run: |
-          # do some operation that changes a file in the git repo
-          date > time.txt
-
-      - name: setup git config
-        run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-
-      - name: commit
-        run: |
-          # Stage the file, commit and push
-          git add time.txt
-          git commit -m "new date commit"
-          git push origin master
+          echo $(date +%Y-%m-%d) > build_date.txt
+          git config user.name "GitHub Action"
+          git config user.email "robot@github.invalid"
+          git add build_date.txt || true
+          git commit -m "Update build (autocommit)" || true
+          git push
         
 
     
