@@ -37,20 +37,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-      - name: Set Git user identity
+      - name: "Commit build date"
         run: |
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git config user.name "${GITHUB_ACTOR}"
-      - name: Create file with current date
-        run: echo $(date +%Y-%m-%d) > current_date.txt
-
-        
-      - name: Create file with current date
-        run: |
-          echo $(date +%Y-%m-%d) > current_date.txt
-          git add current_date.txt
-          git commit -m "Add current_date.txt"
+          echo $(date +%Y-%m-%d) > build_date.txt
+          git config user.name "GitHub Action"
+          git config user.email "robot@github.invalid"
+          git add build_date.txt || true
+          git commit -m "Update build (autocommit)" || true
           git push
+        
+    
 
       
   #    - name: Set up QEMU
