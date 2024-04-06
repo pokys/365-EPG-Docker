@@ -37,3 +37,12 @@ jobs:
             pokys/365-epg-docker:latest
             pokys/365-epg-docker:nightly
           platforms: linux/amd64,linux/arm64,linux/386,linux/arm/v7,linux/arm/v6
+
+      - name: "Commit last state"
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "robot@github.invalid"
+          date > lastrun
+          git add lastrun || true
+          git commit -m "Update last run (autocommit)" || true
+          git push
