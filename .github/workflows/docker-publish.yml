@@ -35,4 +35,5 @@ jobs:
           push: true
           tags: |
             pokys/365-epg-docker:latest
+            pokys/365-epg-docker:nightly
           platforms: linux/amd64,linux/arm64
