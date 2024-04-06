@@ -1,4 +1,4 @@
-name: Build Docker for LATEST
+name: Build Docker for 365-epg-docker:latest
 
 on:
   schedule:
